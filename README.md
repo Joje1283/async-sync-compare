@@ -7,7 +7,6 @@ $ docker-compose up
 ```
 
 ## 2. run test fastapi application
-```shell
 ### 2.1. test blocking endpoint
 ```shell
 $ ab -n 100 -c 100 http://127.0.0.1:8000/blocking-items/
@@ -22,14 +21,14 @@ $ ab -n 100 -c 100 http://127.0.0.1:8000/items/
 ```shell 
 $ ab -n 100 -c 100 http://127.0.0.1:8000/async-items/
 ```
-
-## 2.4. run test django application (delete cache)
+## 3. run test django application
+### 3.1. create database and table and run application
 ```shell    
 $ cd ./django
 $ docker-compose up
 ```
 
-## 2.5. test django application
+### 3.2. test endpoint
 ```shell
 $ ab -n 100 -c 100 http://127.0.0.1:8000/items/
 ```
