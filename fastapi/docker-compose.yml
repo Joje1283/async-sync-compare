@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  mysql:
+    build:
+      context: .
+      dockerfile: DockerfileDb
+    restart: always
+    ports:
+      - "3306:3306"
+
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+    deploy:
+        resources:
+            limits:
+              cpus: '0.50'
+              memory: 512M

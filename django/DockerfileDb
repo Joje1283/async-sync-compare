@@ -1,0 +1,9 @@
+# 기본 이미지로부터 시작
+FROM mysql:latest
+
+# 환경 변수 설정 (루트 패스워드 및 초기 데이터베이스 이름)
+ENV MYSQL_ROOT_PASSWORD=root_password
+ENV MYSQL_DATABASE=my_database
+
+# 초기 데이터베이스 스크립트를 컨테이너 내의 /docker-entrypoint-initdb.d/ 디렉토리로 복사
+COPY ./init.sql /docker-entrypoint-initdb.d/
